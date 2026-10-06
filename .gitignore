@@ -9,3 +9,7 @@ confusables.txt
 /bench-out
 dhat-heap.json
 /quality
+
+# session handoff notes and machine-local config: never tracked
+HANDOFF.md
+.local/
