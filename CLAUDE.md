@@ -25,7 +25,7 @@ cargo build --release --features dhat-heap \
 
 **Any change that touches scoring must leave `scripts/golden.sh check` clean.** It pins the JSON output contract below; the optimizations to date are all output-preserving.
 
-**Any change that touches the emit gate must also leave `scripts/quality.sh check` clean.** golden.sh pins output for the queries it names; quality.sh pins *detection*: per-technique recall over the 143 labeled typosquat pairs, plus emitted-row counts over a top-15k × full-PyPI sweep. It is the gate that would catch a prune trading recall for speed. Both were verified to fail on a deliberately narrowed gate, not merely to pass.
+**Any change that touches the emit gate must also leave `scripts/quality.sh check` clean.** golden.sh pins output for the queries it names; quality.sh pins *detection*: per-technique recall over the 143 labeled typosquat pairs, plus emitted-row counts over a top-15k × full-PyPI sweep. It is the gate that would catch a prune trading recall for speed. Both were verified to fail on a deliberately narrowed gate, not merely to pass. quality.sh measures recall through list mode on purpose: `--stdin` never calls `may_emit`, so a recall check run through it misses a narrowed gate.
 
 ## Architecture
 
